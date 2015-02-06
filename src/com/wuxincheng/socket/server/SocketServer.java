@@ -9,12 +9,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Socket·şÎñÆ÷Ä£Äâ
+ * Socket æœåŠ¡å™¨æ¨¡æ‹Ÿ
  */
 public class SocketServer {
 
 	public static void main(String[] args) {
 		SocketServer server = new SocketServer();
+		
 		server.start();
 	}
 
