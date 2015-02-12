@@ -14,12 +14,10 @@ import java.net.Socket;
 public class SocketServer {
 
 	public static void main(String[] args) {
-		SocketServer server = new SocketServer();
-		
-		server.start();
+		start();
 	}
 
-	private void start() {
+	public static void start() {
 		ServerSocket serverSocket = null;
 		BufferedReader reader = null;
 		BufferedWriter writer = null;
@@ -31,12 +29,17 @@ public class SocketServer {
 			socket = serverSocket.accept();
 			System.out.println("client " + socket.hashCode() + " connected");
 			
+			// 接收客户端数据
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			// 
 			writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			
 			String receivedMessage;
 			while ((receivedMessage = reader.readLine()) != null) {
 				System.out.println("received message: " + receivedMessage);
+				
+				// 返回的信息
 				writer.write("server reply message is " + receivedMessage + "\n");
 				writer.flush();
 			}
